@@ -70,7 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: setup node
-        uses: actions/setup-node@master
+        uses: actions/setup-node@main
 
       - name: checkout boilerplate
         uses: actions/checkout@v2
@@ -106,7 +106,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.ACCESS_TOKEN }}
-          publish_branch: master
+          publish_branch: main
           publish_dir: boilerplateRepo/dt-blog-boilerplate/dist
 
 ```
