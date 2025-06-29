@@ -31,9 +31,18 @@ GZ黄埔. lytain2020@gmail.com <br />
 游戏：七日杀/漫威争锋/无人深空/欧卡2/黑神话...<br />
 </td></tr></table>
 
-<h2>2025年6月</h2>
-<p>本月主题：FOC；ADC；DDR-PHY；</p>
+<h2>2025年7月</h2>
+<p>本月主题：FOC；DDR3-PHY；时序分析；数字后端</p>
 <ul>
+</ul>
+
+<h2>2025年6月</h2>
+<p>本月主题：FOC；ADC；PWM生成</p>
+<ul>
+<li><p><b>27-29：</b>完成50KHz(20us周期)、高步进精度的PWM控制器设计，该模块调用了SerDes单元OSER16，完成并行到串行高速数据的发送。clk_l和clk_h比为1/8，可参数化配置PWM频率。</p></li>
+<li><p><b>23-26：</b>ADC从触发到XMC下发给FPGA侧的延迟测试。5AS_FOC整板功耗测量（低于1W）。M4中定时器可产生PWM频率精度测试评估（不可行，带增强型电机控制专用模块才能达到精度需求）。</p></li>
+<li><p><b>19-20：</b>M4核中三个ADC的触发、采样转换和搬运的程序设计。采用外部EXINT11中断、DMA通道1、每个ADC各自配置1/2/3路。</p></li>
+<li><p><b>18：</b>解决cfg模块在cpu/serial配置时功能错误问题（通过virtuoso+verdi定位该BUG，此前时钟切换电路设计存在问题），srambit错误可以先考虑观察asr/dsr，进行定位；解决5AS上M4硬核点亮LED灯问题（主要还是代码顺序弄错了）；查看ADC相关文档。</p></li>
 <li><p><b>思考：</b>DIY方向（fpga逻辑分析仪、de10-lite+电子相册）。技术提升方向（基于2AN板卡的DDR PHY设计、MIPI DPHY+CPHY学习、ADC采样理论）。</p></li>
 <li><p><b>17：</b>由于5AS板卡外围电路全部连到FPGA上了，MCU侧基本没有充裕的测试电路，故焊接外围测试板子：包括LED灯、按键电路、分压电路。给后面调试ADC+DMA+中断+定时器硬件电路准备下。</p></li>
 <li><p><b>16：</b>5AS板卡里的F435硬核跑起来。解决M4核中ADC+DMA无法重复采样内部温度传感器数组问题（需要使用adc_dma_request_repeat_enable(ADC1, TRUE)开启重复请求）。</p></li>
